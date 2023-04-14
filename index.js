@@ -28,13 +28,11 @@ const noteRouter = require('./routes/notes')
 //app.use('/', loginRouter)
 app.use('/api/notes', noteRouter)
 app.use('/api/products', productRouter)
-
-const generId = () => {
-    const maxId = notes.length > 0
-            ? Math.max(...notes.map(n => n.id))
-            : 0
-            return maxId + 1
-}
+app.use('/api/login', (req,res) => {
+    res.send({
+        token: 'test123'
+    })
+})
 
 const errorHandler = (err, req, res, next) => {
     if (err.name === 'CastError'){
