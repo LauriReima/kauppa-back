@@ -1,16 +1,15 @@
-require('dotenv').config()
 const express = require('express')
 const morgan = require('morgan')
 const cors = require('cors')
 const Product = require('./models/notes')
-const { connection, default: mongoose } = require('mongoose')
 
 const app = express()
-
+const logger = require('./utils/logger')
+const config = require('./utils/config')
 app.use(cors())
 app.use(express.json())
 //app.use(express.static('build'))
-morgan.token('body', function (req, res) { return JSON.stringify(req.body) });
+morgan.token('body', function (req, res) { return JSON.stringify(req.body) })
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :body'))
 
 // const requestLogger = (req, res, next) => {
@@ -22,27 +21,22 @@ app.use(morgan(':method :url :status :res[content-length] - :response-time ms :b
 // }
 // app.use(requestLogger)
 const productRouter = require('./routes/product')
-const loginRouter = require('./routes/user')
+const userRouter = require('./routes/user')
 const noteRouter = require('./routes/notes')
 
 //app.use('/', loginRouter)
 app.use('/api/notes', noteRouter)
 app.use('/api/products', productRouter)
-app.use('/api/login', (req,res) => {
-    res.send({
-        token: 'test123'
-    })
+app.use('/api/users', userRouter)
+app.use('/api/login', (req,res) => { 
+	res.send({
+		token: 'test123'
+	})
 })
 
-const errorHandler = (err, req, res, next) => {
-    if (err.name === 'CastError'){
-        return res.status(400).send({ error: 'id:tä ei löydy'})
-    }
-    next(err)
-}
-app.use(errorHandler)
+app.use(logger.errorHandler)
 
-const PORT = process.env.PORT 
-app.listen(PORT, () => {
-   console.log(`Server running on port ${PORT}`); 
+ 
+app.listen(config.PORT, () => {
+	console.log(`Server running on port ${config.PORT}`) 
 })
