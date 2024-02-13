@@ -6,7 +6,15 @@ POST http://localhost:3001/api/users/
 Content-Type: application/json
 
 {
-    "username": "MikaHimoJavaaja",
-    "name": "Mika",
-    "password": "ase"
+    "username": "lauri",
+    "password": "salasana"
+}
+
+###
+POST http://localhost:3001/api/login/
+Content-Type: application/json
+
+{
+    "username": "sello",
+    "password": "aenvn"
 }

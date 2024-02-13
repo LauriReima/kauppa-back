@@ -11,8 +11,7 @@ Content-Type: application/json
 
 {
     "name": "kirves",
-    "price": 137,
-    "image": "kuva",
+    "price": "13657",
     "category": "ase"
 }
 ###

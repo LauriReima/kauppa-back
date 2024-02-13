@@ -16,23 +16,21 @@ app.use(morgan(':method :url :status :res[content-length] - :response-time ms :b
 //     console.log('Method:', req.method);
 //     console.log('Path:', req.path);
 //     console.log('Body:', req.body);
-//     console.log('---');
+// 	console.log('Seerver:', res.getHeader('Server'));
+// 	console.log('server:', res.get('Server'));
 //     next()
 // }
 // app.use(requestLogger)
 const productRouter = require('./routes/product')
 const userRouter = require('./routes/user')
 const noteRouter = require('./routes/notes')
+const loginRouter = require('./routes/login')
 
 //app.use('/', loginRouter)
 app.use('/api/notes', noteRouter)
 app.use('/api/products', productRouter)
 app.use('/api/users', userRouter)
-app.use('/api/login', (req,res) => { 
-	res.send({
-		token: 'test123'
-	})
-})
+app.use('/api/login', loginRouter)
 
 app.use(logger.errorHandler)
 
