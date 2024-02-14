@@ -47,10 +47,10 @@ router.delete('/api/notes/:id', (req,res, next) => {
 router.put('/api/notes/:id', (req,res,next) => {
     const body = req.body
     const product = {
-        constent: body.content,
+        content: body.content,
         important: body.important,
     }
-    Note.findByIdAndUpdate(req.params.id, product, {new: true}).then(
+    Note.findByIdAndUpdate(req.params.id, product, {new: false}).then(
         updatedProd => {
             res.json(updatedProd)
         }).catch(err => next(err))

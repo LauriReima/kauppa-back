@@ -1,5 +1,5 @@
 ###
-GET http://localhost:3001/api/users/
+GET http://localhost:3001/api/users/64f6c4d33210a4639c29c16e
 
 ###
 POST http://localhost:3001/api/users/
@@ -8,6 +8,16 @@ Content-Type: application/json
 {
     "username": "lauri",
     "password": "salasana"
+}
+
+###
+PUT http://localhost:3001/api/users/64f6c4d33210a4639c29c16e
+Content-Type: application/json
+
+{
+    "username": "uusi",
+    "password": "salasana",
+    "cart": ["hello"]
 }
 
 ###
