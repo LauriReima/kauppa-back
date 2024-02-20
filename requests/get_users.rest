@@ -1,5 +1,5 @@
 ###
-GET http://localhost:3001/api/users/65d36564a522c7f854207966
+GET http://localhost:3001/api/users/
 
 ###
 POST http://localhost:3001/api/users/
@@ -11,11 +11,16 @@ Content-Type: application/json
 }
 
 ###
-PUT http://localhost:3001/api/users/65d36564a522c7f854207966
+PUT http://localhost:3001/api/users/65d4f6e534f2e0a79eedcb48
 Content-Type: application/json
 
 {
-    "product": "642c17f0c7c74461746014ce"
+    "product": [{
+        "name": "kilpi",
+        "price": 13,
+        "category": "armor",
+        "id": "642be8eeb8d16e97931346c9"
+    }]
 }
 
 ###

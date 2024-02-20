@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 const bcrypt = require('bcrypt')
 const express = require('express')
 const router = express.Router()
@@ -60,15 +61,17 @@ router.put('/:id', async (req, res,next) => {
     const body = req.body
     
     const user = {
-        $push : {cart: [...body.product]},
+        $push: { cart: { $each: body.product } },
     }
-    console.log(body, 'huhaa')
-    User.findByIdAndUpdate(req.params.id, 
-        user, {new: true}).then(
+    console.log(JSON.stringify(body.product), 'huhaa')
+    User.findByIdAndUpdate(
+        req.params.id, 
+        user, 
+        {new: true})
+        .then(
         updatedUser => {
             res.json(updatedUser)
         }).catch(err => next(err))
-    //user.save()
 })
 
 

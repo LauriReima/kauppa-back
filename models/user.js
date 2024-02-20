@@ -5,8 +5,9 @@ const userSchema = mongoose.Schema({
     passwordHash: String,
     cart: [
         {
-            type: mongoose.Schema.Types.ObjectId, 
+            type: mongoose.Schema.Types.Object, 
             ref: 'Product',
+            unique: false
         }
     ],
 })
