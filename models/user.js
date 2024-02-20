@@ -3,12 +3,12 @@ const mongoose = require('mongoose')
 const userSchema = mongoose.Schema({
     username: String,
     passwordHash: String,
-    cart: Array
-    // [
-    //     {
-    //         product: {type: mongoose.Schema.Types.ObjectId, ref: 'Product'},
-    //     },
-    // ],
+    cart: [
+        {
+            type: mongoose.Schema.Types.ObjectId, 
+            ref: 'Product',
+        }
+    ],
 })
 
 userSchema.set('toJSON', {

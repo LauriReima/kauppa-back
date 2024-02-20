@@ -15,10 +15,11 @@ Content-Type: application/json
     "category": "ase"
 }
 ###
-PUT http://localhost:3001/api/notes/6405fb02ac1ce2a57cd8c961
+PUT http://localhost:3001/api/products/642c17f0c7c74061746014ce
 Content-Type: application/json
 
 {
-    "content": "kokeilu2",
-    "important": true
+    "name": "upgraded keihäs",
+    "price": "14",
+    "category": "range"
 }

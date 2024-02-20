@@ -1,5 +1,5 @@
 ###
-GET http://localhost:3001/api/users/64f6c4d33210a4639c29c16e
+GET http://localhost:3001/api/users/65d36564a522c7f854207966
 
 ###
 POST http://localhost:3001/api/users/
@@ -11,13 +11,11 @@ Content-Type: application/json
 }
 
 ###
-PUT http://localhost:3001/api/users/64f6c4d33210a4639c29c16e
+PUT http://localhost:3001/api/users/65d36564a522c7f854207966
 Content-Type: application/json
 
 {
-    "username": "uusi",
-    "password": "salasana",
-    "cart": ["hello"]
+    "product": "642c17f0c7c74461746014ce"
 }
 
 ###
@@ -25,6 +23,6 @@ POST http://localhost:3001/api/login/
 Content-Type: application/json
 
 {
-    "username": "sello",
-    "password": "aenvn"
+    "username": "sello1",
+    "password": "salasana"
 }

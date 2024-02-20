@@ -56,17 +56,19 @@ router.post('/',async (req,res) => {
 	
 })
 
-router.put(':userId/', async (req, res,next) => {
+router.put('/:id', async (req, res,next) => {
     const body = req.body
-    const product = {
-        username: body.username,
-        id: body.id,
-        cart: 'hello',
+    
+    const user = {
+        $push : {cart: [...body.product]},
     }
-    User.findByIdAndUpdate(req.params.id, product, {new: true}).then(
-        updatedProd => {
-            res.json(updatedProd)
+    console.log(body, 'huhaa')
+    User.findByIdAndUpdate(req.params.id, 
+        user, {new: true}).then(
+        updatedUser => {
+            res.json(updatedUser)
         }).catch(err => next(err))
+    //user.save()
 })
 
 

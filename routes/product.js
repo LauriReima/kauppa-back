@@ -55,7 +55,16 @@ router.delete('/:id', (req,res, next) => {
 })
 
 router.put('/:id', (req, res, next) => {
-    Product.findById(req.params.id)
+    const body = req.body
+    const product = {
+        name: body.name,
+        price: body.price,
+        image: body.image,
+        category: body.category
+    }
+    Product.findByIdAndUpdate(req.params.id, product, {new: true}).then(updatedProduct => {
+        res.json(updatedProduct)
+    }).catch(err => next(err))
 })
 
 
