@@ -4,7 +4,7 @@ const express = require('express')
 const router = express.Router()
 const User = require('../models/user')
 const Product = require('../models/product')
-
+const uuid = require('uuid');
 
 router.get('/', (req,res) => {
     User.find({}).then(note => {
@@ -58,12 +58,23 @@ router.post('/',async (req,res) => {
 })
 
 router.put('/:id', async (req, res,next) => {
+    try {
     const body = req.body
-    
+
     const user = {
-        $push: { cart: { $each: body.product } },
+      $push: {
+        cart: {
+            $each: body.product.map(product => ({
+                name: product.name,
+                price: product.price,
+                category: product.category,
+                id: uuid.v4(),
+              })),
+        },
+      },
     }
-    console.log(JSON.stringify(body.product), 'huhaa')
+    console.log(body.product, 'huhaa')
+    console.log(body.product.name, 'nimi')
     User.findByIdAndUpdate(
         req.params.id, 
         user, 
@@ -71,7 +82,9 @@ router.put('/:id', async (req, res,next) => {
         .then(
         updatedUser => {
             res.json(updatedUser)
-        }).catch(err => next(err))
+        })} catch (err) {
+            next(err)
+          }
 })
 
 

@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 const mongoose = require('mongoose')
 const config = require('../utils/config')
 const url = config.MONGODB_URI
