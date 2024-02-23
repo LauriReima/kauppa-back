@@ -11,15 +11,14 @@ Content-Type: application/json
 }
 
 ###
-PUT http://localhost:3001/api/users/65d4f6e534f2e0a79eedcb48
+PUT http://localhost:3001/api/users/65d5069363cfc129551f28a2
 Content-Type: application/json
 
 {
     "product": [{
         "name": "kilpi",
         "price": 13,
-        "category": "armor",
-        "id": "642be8eeb8d16e97931346c9"
+        "category": "armor"
     }]
 }
 

@@ -60,7 +60,15 @@ router.post('/',async (req,res) => {
 router.put('/:id', async (req, res,next) => {
     try {
     const body = req.body
-
+    const timestamp = new Date()
+    const formattedTimestamp = timestamp.toLocaleString('fi-FI', {
+        day: 'numeric',
+        month: 'numeric',
+        year: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: false,
+    })
     const user = {
       $push: {
         cart: {
@@ -69,6 +77,7 @@ router.put('/:id', async (req, res,next) => {
                 price: product.price,
                 category: product.category,
                 id: uuid.v4(),
+                date: formattedTimestamp
               })),
         },
       },
