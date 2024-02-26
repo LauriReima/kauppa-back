@@ -82,8 +82,7 @@ router.put('/:id', async (req, res,next) => {
         },
       },
     }
-    console.log(body.product, 'huhaa')
-    console.log(body.product.name, 'nimi')
+    
     User.findByIdAndUpdate(
         req.params.id, 
         user, 
