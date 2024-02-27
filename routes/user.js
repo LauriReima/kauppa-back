@@ -3,8 +3,8 @@ const bcrypt = require('bcrypt')
 const express = require('express')
 const router = express.Router()
 const User = require('../models/user')
-const Product = require('../models/product')
-const uuid = require('uuid');
+
+const uuid = require('uuid')
 
 router.get('/', (req,res) => {
     User.find({}).then(note => {
@@ -54,7 +54,6 @@ router.post('/',async (req,res) => {
             })
         }	
     })
-	
 })
 
 router.put('/:id', async (req, res,next) => {
@@ -82,7 +81,7 @@ router.put('/:id', async (req, res,next) => {
         },
       },
     }
-    
+
     User.findByIdAndUpdate(
         req.params.id, 
         user, 

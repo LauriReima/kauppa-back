@@ -1,7 +1,6 @@
 const express = require('express')
 const morgan = require('morgan')
 const cors = require('cors')
-const Product = require('./models/notes')
 
 const app = express()
 const logger = require('./utils/logger')
@@ -15,17 +14,12 @@ morgan.token('body', function (req, res) {
     }
     return JSON.stringify(req.body)
 })
-	
-
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :body'))
 
 const productRouter = require('./routes/product')
 const userRouter = require('./routes/user')
-const noteRouter = require('./routes/notes')
 const loginRouter = require('./routes/login')
 
-//app.use('/', loginRouter)
-app.use('/api/notes', noteRouter)
 app.use('/api/products', productRouter)
 app.use('/api/users', userRouter)
 app.use('/api/login', loginRouter)

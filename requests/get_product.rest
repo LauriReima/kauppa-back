@@ -3,7 +3,7 @@ GET http://localhost:3001/api/products/
 
 
 ###
-DELETE http://localhost:3001/api/notes/641885209842e90d1f4a125a
+DELETE http://localhost:3001/api/products/32414125
 
 ###
 POST http://localhost:3001/api/products/
